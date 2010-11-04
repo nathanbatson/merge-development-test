@@ -1,5 +1,5 @@
 ################################################################################################################
-# This deploy recipe will deploy a project from a Codaset repo to a Linode VPS server
+# This deploy recipe will deploy a project from a github repo to a VPS server
 #
 # Assumptions:
 #   * You are using VPS hosting with SSH access
@@ -47,10 +47,6 @@ namespace :deploy do
     task t, :roles => :app do ; end
   end
 end
-
-# additional settings
-#default_run_options[:pty] = true  # Forgo errors when deploying from windows
-#ssh_options[:keys] = %w(/Path/To/id_rsa)            # If you are using ssh_keys
 
 set :use_sudo, false
  

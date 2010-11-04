@@ -1,0 +1,33 @@
+Here is an example of how to configure my provided capistrano script.
+
+set :project, 'your-project'
+set :github_user, "your-username"
+set :domain_name, "your-project.your-staging-server"
+set :user, 'ssh-username'
+set :domain, 'mydomain.com'
+
+The project name is the github repositories name.  The user is the main admin account's username.  The domain is actually the domain for the server you're deploying to while the domain name is the name of the virtual host container we set up earlier when setting our server for capistrano.
+
+Once you've configured these settings to your server enviornment, we just have to run these commands to deploy our site for the first time.
+
+cap staging deploy:setup
+cap staging deploy:cold
+
+The staging option just tells capistrano to use the staging script, this could be any namespace we create as long as we create the corresponding .rb file in the deploy folder. Capistrano creates a set of folders inside our virtual hosting container folder, they look like this.
+
+current
+logs
+releases
+shared
+
+The current folder is just a symlink to a timestamped directory in the releases folder, this is where each deploy is actually created in the file system. Logs is a folder where apache and rails/php logs can be symlinked to. Shared is where we place all of our files that do not belong in version control, like server specific configs and user uploaded images. Now that all of this is set up we're ready to do our first deploy.
+
+cap staging deploy
+
+From now on, anytime we want to deploy the latest version of our code from github, we just run the very same deploy command. If we need to roll back a release because we might have accidentally deployed, simply run this command.
+
+cap staging deploy:rollback
+
+If we want to cleanup all the old releases to free up space on the server, we can run this command.
+
+cap staging deploy:cleanup
