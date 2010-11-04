@@ -8,7 +8,7 @@ set :domain, 'mydomain.com'
 
 The project name is the github repositories name.  The user is the main admin account's username.  The domain is actually the domain for the server you're deploying to while the domain name is the name of the virtual host container we set up earlier when setting our server for capistrano.
 
-Once you've configured these settings to your server enviornment, we just have to run these commands to deploy our site for the first time.
+Once you've configured these settings to your server environment, we just have to run these commands to deploy our site for the first time.
 
 cap staging deploy:setup
 cap staging deploy:cold
