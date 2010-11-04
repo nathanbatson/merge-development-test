@@ -13,7 +13,7 @@
 set :project, 'merge-development-test' 
 set :github_user, "nathanbatson" # Your GitHub username
 set :domain_name, "mergetraining.comicalconcept.com" # should be something like mydomain.com
-set :user, 'nathanbatson' # Linode username
+set :user, 'merge' # Linode username
 set :domain, '74.207.233.153' # Linode IP address
 
 #### You shouldn't need to change anything below ########################################################
@@ -31,7 +31,7 @@ set :keep_releases, 1
 # deploy config
 set :deploy_to, applicationdir
 set :deploy_via, :remote_cache
-set :runner, "nathanbatson" 
+set :runner, "merge" 
  
 # roles (servers)
 role :app, domain
