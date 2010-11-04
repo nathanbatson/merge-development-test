@@ -50,14 +50,6 @@ namespace :deploy do
   end
 end
 
-namespace :crontab do
-  desc "Update the crontab based on config/schedule.rb"
-  task :update, :roles => :app, :except => { :no_release => true } do
-    run "crontab -r"
-    run "cd #{current_path} && rake update_crontab RAILS_ENV=production"
-  end
-end
-
 # additional settings
 #default_run_options[:pty] = true  # Forgo errors when deploying from windows
 #ssh_options[:keys] = %w(/Path/To/id_rsa)            # If you are using ssh_keys
